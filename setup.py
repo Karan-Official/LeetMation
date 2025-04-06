@@ -42,6 +42,7 @@ def save_credentials(appdata_path):
     except Exception as e:
         print(f"Failed to save credentials: {e}")
 
+# Move Files to the hidden folder created
 def move_files(appdata_path):
     file_list = ["reLogin.py", "leetcodeProblemAutomation.py", "leetcodeDailyAutomation.py", "cookies.json"]
     try:
@@ -57,6 +58,7 @@ def move_files(appdata_path):
     except Exception as e:
         print(f"Failed to move files: {e}")
 
+# Get the desktop path for windows and mac
 def get_desktop_path():
     if os.name == 'nt':  # Windows
         CSIDL_DESKTOP = 0  # CSIDL for Desktop
@@ -67,6 +69,7 @@ def get_desktop_path():
     else:  # Mac/Linux
         return str(Path.home() / "Desktop")
 
+# Create a .bat or .sh file to run the automation
 def create_executable(appdata_path):
     desktop_path = get_desktop_path()
 
