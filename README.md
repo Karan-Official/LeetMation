@@ -45,7 +45,6 @@ LeetMation removes the repetitive tasks from your coding practice routine. Wheth
 - `shutil` – for file operations (copying, deleting, etc.)
 - `pathlib` – object-oriented file system paths
 - `ctypes` – for interacting with C-level APIs
-- `platform` – to detect and adapt to OS-level configurations
 
 ---
 
@@ -67,11 +66,13 @@ Before using **LeetMation**, make sure to configure your LeetCode editor with th
 
 Follow these steps to install and set up **LeetMation**:
 
-1. **Download the ZIP** of this repository and **unzip** it to a location of your choice.
+1. Make sure **python** and **seleniumbase** is installed.
 
-2. **Open a terminal** (or Command Prompt) inside the unzipped folder.
+2. **Download the ZIP** of this repository and **unzip** it to a location of your choice.
 
-3. Run the following command:
+3. **Open a terminal** (or Command Prompt) inside the unzipped folder.
+
+4. Run the following command:
    ```bash
    python ./setup.py
    ```
@@ -80,21 +81,19 @@ Follow these steps to install and set up **LeetMation**:
    - Create a **hidden folder** to securely store your LeetCode credentials.
    - Generate an **executable file**:
      - `.bat` file for **Windows**
-     - `.sh` script for **macOS/Linux**
 
-4. After successful setup, you may delete the project folder — the executable (`.bat` or `.sh`) will be sufficient to run the automation.
+5. After successful setup, you may delete the project folder — the executable will be sufficient to run the automation.
 
-5. To automate LeetCode submissions, simply run:
+6. To automate LeetCode submissions, simply run:
    - On **Windows**: Double-click the `.bat` file
-   - On **Mac/Linux**: Execute the `.sh` file from terminal
 
-> ⚠️ Make sure Python is installed and added to your system path. This script uses Python 3.
+> ⚠️ This script uses Python 3. On running the `.bat` file for first time it will install drivers, then again run the `.bat` file. 
 
 ---
 
 ## 🚀 Usage
 
-Once the executable file is created (`.bat` for Windows or `.sh` for macOS/Linux), simply run it to start the automation.
+Once the executable file is created, simply run it to start the automation.
 
 You will be presented with two options:
 
