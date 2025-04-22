@@ -19,31 +19,29 @@ def getProblem(driver, problemID):
     try:
         problemID = str(problemID)
 
-        # Navigate to the LeetCode search page
-        search_url = f"https://leetcode.com/problemset/?search={problemID}&page=1"
-        driver.open(search_url)
+        # Step 1: Go to LeetCode problemset page
+        driver.open("https://leetcode.com/problemset/all/")
 
-        # Wait for the rows to load
-        driver.wait_for_element("div[role='row']", timeout=10)
+        # Step 2: Wait for the search box and type the problem ID
+        driver.wait_for_element('input[placeholder="Search questions"]', timeout=10)
+        driver.type('input[placeholder="Search questions"]', problemID)
+        
+        # Step 3: Wait for the SECOND <a> tag that links to a problem
+        time.sleep(5)
 
-        # Get all rows
-        rows = driver.find_elements("div[role='row']")
+        # Step 4: Select all <a> tags within that rendered problem list
+        links = driver.find_elements('a[href^="/problems/"]')
 
-        # Ensure there are at least 3 rows before accessing the third one
-        if len(rows) < 3:
+        # Step 5: Check if at least 2 links are there and return the second one
+        if len(links) >= 2:
+            href = links[1].get_attribute("href")
+            slug_match = re.search(r"/problems/([^/?]*)", href)
+            if slug_match:
+                return slug_match.group(1)
+            else:
+                return "Failed to find the problem"
+        else:
             return "Failed to find the problem"
-
-        # Get the first problem link inside the third row
-        links = rows[2].find_elements("css selector", "a[href^='/problems/']")
-        if not links:
-            return "Failed to find the problem"
-
-        # Extract the problem URL
-        secondProblemSlug = links[0].get_attribute("href")
-
-        # Extract and return the problem slug
-        slug_match = re.search(r"/problems/([^/?]*)", secondProblemSlug)
-        return slug_match.group(1) if slug_match else "Failed to find the problem"
 
     except Exception as e:
         return "Error fetching problem"

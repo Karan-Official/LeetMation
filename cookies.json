@@ -1,7 +1,7 @@
 [
   {
     "name": "LEETCODE_SESSION",
-    "value": "",
+    "value": "leetmation",
     "domain": ".leetcode.com",
     "path": "/",
     "httpOnly": true,
@@ -10,7 +10,7 @@
   },
   {
     "name": "csrftoken",
-    "value": "",
+    "value": "leetmation",
     "domain": ".leetcode.com",
     "path": "/",
     "httpOnly": false,
