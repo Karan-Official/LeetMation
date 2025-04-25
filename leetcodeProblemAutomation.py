@@ -69,11 +69,25 @@ def getCppSolution(driver, problemSlug):
         # Navigate to the C++ solution page
         driver.open(cpp_solution_link)
 
-        # Wait for the code block and extract the C++ code
-        driver.wait_for_element("pre code.language-cpp", timeout=10)
-        cpp_code = driver.get_text("pre code.language-cpp")
+        # Try to get C++ code block
+        try:
+            driver.wait_for_element("pre code.language-cpp", timeout=10)
+            cpp_code = driver.get_text("pre code.language-cpp")
+            if cpp_code:
+                return cpp_code
+        except:
+            pass
 
-        return cpp_code or "Failed to find a C++ solution"
+        # If C++ block not found, try to get Java block instead
+        try:
+            driver.wait_for_element("pre code.language-java", timeout=10)
+            java_code = driver.get_text("pre code.language-java")
+            if java_code:
+                return java_code
+        except:
+            pass
+
+        return "Failed to find a C++ solution"
 
     except Exception as e:
         return "Error fetching C++ solution"
